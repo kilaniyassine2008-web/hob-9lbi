@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 { font-size: 3em; }
+    p { font-size: 1.5em; }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #ff4d6d;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    /* Explosion hearts */
+    .explode {
+      position: fixed;
+      font-size: 20px;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      to {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+      }
+    }
+
+    /* Page 2 */
+    #page2 {
+      display: none;
+      background: url('image.png') center/cover no-repeat;
+      height: 1600px;
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.5);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Love letter popup */
+    #letter {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: white;
+      color: #ff4d6d;
+      padding: 30px;
+      border-radius: 20px;
+      width: 300px;
+      text-align: center;
+      transition: 0.4s;
+      z-index: 10;
+    }
+
+    #letter.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    #letter button {
+      margin-top: 15px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Music -->
+<audio id="ma">
+  <source src="mc-artisan-elghira-ft-didine-canon-16-prod-by-zmajor_ls6AUIrT.mp3" type="audio/mp3">
+</audio>
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+  <h1>Nawwarti rou7 yassountk lghalya❤️</h1>
+  <p>You are my forever💕</p>
+  <button onclick="nextPage()">Next 💌</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2" onclick="showEffects(event)">
+  <div class="overlay">
+    <h1>Nawwarra nhebek brcha ya saghrounti 💖</h1>
+    <p>Click anywhere 💌</p>
+  </div>
+</div>
+
+<!-- Love Letter -->
+<div id="letter">
+  <h2>For You ❤️</h2>
+  <p>Nawwara lghalya nhebek brcha ya rou7 9lbi w nheb nkolk rani ghert 3ale5er mo9bilika ki b3thtli lcptr w en plus kifh majitch kotli doub mab3thlk lmsg jit kotli ba3ed ma hkitou w lkoll w kima inti tkoli raw lbnet natimnhomch 7ta ena nheb nkolk louled matimnhomch 5aterhom 8adarra w matkolich lee w lkoll 5aterni ena 3echt 9bal l8adra w lkoll w n3rf louled kifh ykhamou snn Nawwara mislch hby marra jeya ki yb3thlk ay tfol ay msg koli kbal matjewbou nabdech meyet kawemni koli w ata nkolk chnia t3ml nour w khw Nawwarti nhebek brchaya nour yali ma kifk 7ta tofla ya rhy ya zabour brcha wkth n3awd ndhou9 chfeyf wlee n3awd nbouss lboobs ija Nawwaranhar tleth hby aman w na3ch9k ya hob 7yeti yali denya ble bik 3dem ya mezyena brcha nmout 3lik ya gamrti lbnina i love you so much 👅👅💕💕💕💕💕👅👅💕💕💕💕💕💖 <br><center>Iwant to put my dick in your pussy and in your boobs and in your mouth and in your hand and in your feet and in your hair 🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦🫦</center></p>
+  <button onclick="closeLetter()">Close</button>
+</div>
+
+<script>
+  function nextPage() {
+    document.getElementById('page1').style.display = 'none';
+    document.getElementById('page2').style.display = 'flex'; sayNext();
+  }
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }
+
+  setInterval(createHeart, 300);
+
+  function showEffects(e) {
+    // Heart explosion
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('explode');
+      heart.innerHTML = '❤️';
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      heart.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
+      heart.style.setProperty('--y', (Math.random() * 200 - 100) + 'px');
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 1000);
+    }
+
+    // Show love letter
+    const letter = document.getElementById('letter');
+    letter.classList.add('show');
+  }
+
+  function closeLetter() {
+    document.getElementById('letter').classList.remove('show');
+  }
+  function sayNext(){
+    document.getElementById("ma").play();
+  }
+</script>
+
+</body>
+</html>
